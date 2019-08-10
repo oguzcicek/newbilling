@@ -9,3 +9,4 @@ Setup Steps :
 - make seeds : rake db:seed
 - check some basic unit tests : bundle exec rspec
 - Run - rails s
+- See some endpoints on http://localhost:3000/apipie
