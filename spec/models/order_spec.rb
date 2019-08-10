@@ -12,11 +12,6 @@ RSpec.describe Order, type: :model do
       expect(order.valid?).to eq(false)
     end
 
-    it "should be able to save order" do
-      order = Order.new(quantity: 31, company_id: 1)
-      expect(order.save).to eq(true)
-    end
-
   end
 
 end
