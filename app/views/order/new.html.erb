@@ -1,0 +1,48 @@
+<div class="offset-md-3 col-md-6">
+  <div class="form-body">
+    <%  if @order.errors.any?  %>
+      <p>  <%= pluralize(@order.errors.count , 'error')   %>  </p>
+      <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li> <%= msg  %></li>
+        <%  end  %>
+      </ul>
+    <%  end %>
+    <h4> Create One Order</h4>
+    <%= simple_form_for @order, url: order_index_path(@order), html: { class: "form-horizontal"}  do |f| %>
+      <div class="form-group">
+        <div class="col-md-12">
+          <%= f.input_field  :quantity , class:'form-control' , placeholder:'Widget Quantity'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-12">
+          <%= f.input_field :company_id , collection: @companies.map{|c| [c.name, c.id ]} , class:'form-control' , include_blank: 'Select Your Company'  %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <div class="col-md-12">
+          <%= f.button :submit , value: 'Submit', class:'form-control' %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<hr>
+  <div class="offset-md-3 col-md-6">
+    <h4> Create Bulk Order (100 Randomized)</h4>
+    <%= link_to 'Bulk Order', bulk_order_path, method: :post , class:'form-control' %>
+  </div>
+<hr>
+
+<hr>
+  <div class="offset-md-3 col-md-6">
+    <h4> Delete All Orders</h4>
+    <%= link_to 'Delete Orders', delete_all_orders_path, method: :delete , class:'form-control' %>
+  </div>
+<hr>
+
+
