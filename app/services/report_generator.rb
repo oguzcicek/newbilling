@@ -3,16 +3,12 @@
 class ReportGenerator
 
   class << self
-
-
     # Report Generator Service
-    # Service returns
-    #
-    # to easily show reports in html i return hashes. If we need to use REST , i can convert them to Json (with .to_json)
-
+    # to easily show reports in html i return hashes. If we need to use REST , i can convert them to Json
+    # Generates 3 types of reports..
 
     ## REPORT 1
-
+    # get the total amount we should bill each Affiliate
     def total_amount_report_of_affiliates
       get_affiliates_resellers
       affiliates_total_amounts = []
@@ -26,6 +22,7 @@ class ReportGenerator
        affiliates_total_amounts
     end
 
+    # get the total amount we should bill each Reseller
     def total_amount_report_of_resellers
       get_affiliates_resellers
       resellers_total_amounts = []
@@ -41,6 +38,7 @@ class ReportGenerator
 
 
     ## REPORT 2
+    # get the profit earned by each Affilate
     def profit_report_of_affiliates
       get_affiliates_resellers
       affiliates_profits = []
@@ -54,7 +52,7 @@ class ReportGenerator
        affiliates_profits
     end
 
-
+    # get the profit earned by each Reseller
     def profit_report_of_resellers
       get_affiliates_resellers
       resellers_profits = []
@@ -70,6 +68,7 @@ class ReportGenerator
 
 
     #REPORT 3
+    # get the total revenue for the company from all sales: Affiliate, Reseller, Direct
     def total_revenue_report
       @orders =  Order.from_this_month
       total_revenue = 0
@@ -79,11 +78,15 @@ class ReportGenerator
        total_revenue
     end
 
+    # get all affiliates and resellers
     def get_affiliates_resellers
       @affiliates = Company.where(payment_method_id: PaymentMethod.where(method: 'tiered') )
       @resellers = Company.where(payment_method_id: PaymentMethod.where(method: 'flat') )
     end
 
+    # Condition for affiliates: Calculate earnings for each affiliate.
+    # Check how many items are sold and multiply with the right price
+    # Owner gets; 0 - 500 : $60 per widget, 501 - 1000 : $50 per widget , 1001+ : $40 per widget
     def affiliates_condition(sum , sell_price)
       if sum < 500
         sum * (sell_price - 60)
@@ -94,7 +97,7 @@ class ReportGenerator
       end
     end
 
-
+    # Calculate earning for resellers
     def resellersCalculation(sum , sell_price)
       sum * (sell_price - 50)
     end

@@ -25,9 +25,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'simple_form'
 gem 'jquery-datatables'
 gem 'responders'
-
-
-
+gem 'apipie-rails'
 
 
 
@@ -35,11 +33,11 @@ gem 'responders'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_bot'
 end
 
 group :development do

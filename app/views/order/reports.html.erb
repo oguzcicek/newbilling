@@ -1,9 +1,7 @@
-
 <h4>Report 1 </h4>
 
 <p>Total Amount by Affilates</p>
 <div class="offset-md-2 col-md-8">
-
   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -12,7 +10,6 @@
       <th>Total Amount Paid</th>
     </tr>
     </thead>
-
     <tbody>
     <% @total_amounts_affiliates.each do |c| %>
       <tr>
@@ -26,10 +23,8 @@
   </table>
 </div>
 
-
 <p>Total Amount by Resellers</p>
 <div class="offset-md-2 col-md-8">
-
   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -38,7 +33,6 @@
       <th>Total Amount Paid</th>
     </tr>
     </thead>
-
     <tbody>
     <% @total_amounts_resellers.each do |c| %>
       <tr>
@@ -52,13 +46,11 @@
   </table>
 </div>
 
-
 <hr>
 
 <h4>Report 2 </h4>
 <p>Profit Earned by Affilates</p>
 <div class="offset-md-2 col-md-8">
-
   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -67,7 +59,6 @@
       <th>Total Profit Earned</th>
     </tr>
     </thead>
-
     <tbody>
     <% @profit_from_affilates.each do |c| %>
       <tr>
@@ -76,18 +67,12 @@
         <td>$ <%= c[:amount] %>  </td>
       </tr>
     <% end %>
-
     </tbody>
   </table>
 </div>
 
-
-
-
-
 <p>Profit Earned by Resellers</p>
 <div class="offset-md-2 col-md-8">
-
   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -96,7 +81,6 @@
       <th>Total Profit Earned</th>
     </tr>
     </thead>
-
     <tbody>
     <% @profit_from_resellers.each do |c| %>
       <tr>
@@ -110,12 +94,10 @@
   </table>
 </div>
 
-
-
 <hr>
 
 <h4>Report 3 </h4>
-<p>Total Revenue For The Company From All Sales: $ <%= @total_revenue  %></p>
+<p>Total Revenue For The Company From All Sales: $ <%= @total_revenue %></p>
 
 
 
